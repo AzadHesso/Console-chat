@@ -18,6 +18,6 @@ public:
 
 private:
 	std::string _name;
-    const std::string _login;
+    std::string _login;
 	std::string _password;
 };
