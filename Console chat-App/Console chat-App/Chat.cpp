@@ -52,6 +52,36 @@ void Chat::showLoginMenu()
 	} while (!_currentUser && _isChatWork);
 }
 
+void Chat::showUserMenu()
+{
+	char operation;
+
+	std::cout << "User name: " << _currentUser->getName() << std::endl;
+
+	do
+	{
+		std::cout << "Press (S) to Show chat or (A) to Add message or (E) to exit " << std::endl;
+
+		std::cin >> operation;
+
+		switch (operation)
+		{
+		case 'S':
+			showChat();
+			break;
+		case 'A':
+			addMessage();
+			break;
+		case 'E':
+			_currentUser = nullptr;
+			break;
+		default:
+			std::cout << "Mistyped.. Please press(S) to Show chat or (A) to Add message or (E) to exit " << std::endl;
+		}
+
+	} while (_currentUser);
+}
+
 void Chat::login()
 {
 	std::string login;
