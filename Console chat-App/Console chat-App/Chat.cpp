@@ -189,6 +189,12 @@ void Chat::addMessage()
 	std::cin.ignore();
 	getline(std::cin, textMsg);
 
+	if (!(to == "all" || getUserByLogin(to)))
+	{
+		std::cout << "Error can,t find " << to << std::endl;
+		return;
+	}
+
 	if (to == "all")
 		_messageArr.push_back(Message(_currentUser->getLogin(), "all", textMsg));
 	else
