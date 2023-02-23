@@ -164,6 +164,24 @@ void Chat::showChat() const
 	}
 }
 
+void Chat::addMessage()
+{
+	std::string to;
+	std::string textMsg;
+
+	std::cout << "to (login) or to (all) : ";
+	std::cin >> to;
+	std::cout << "Text: ";
+	std::cin.ignore();
+	getline(std::cin, textMsg);
+
+	if (to == "all")
+		_messageArr.push_back(Message(_currentUser->getLogin(), "all", textMsg));
+	else
+		_messageArr.push_back(Message(_currentUser->getLogin(), getUserByLogin(to)->getLogin(), textMsg));
+
+}
+
 std::vector<User>& Chat::getAllUsers()
 {
 	return _userArr;
