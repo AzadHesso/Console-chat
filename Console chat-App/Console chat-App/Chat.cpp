@@ -16,6 +16,42 @@ std::shared_ptr<User> Chat::getCurrentUser() const
 	return _currentUser;
 }
 
+void Chat::showLoginMenu()
+{
+	_currentUser = nullptr;
+	char operation;
+
+	do
+	{
+		std::cout << "Press (L) to Login or (S) to SignUp or (E) to Exit " << std::endl;
+		std::cin >> operation;
+
+		switch (operation)
+		{
+		case 'L':
+			login();
+			break;
+		case 'S':
+			try 
+			{
+				signUp();
+			}
+			catch (const std::exception& exp)
+			{
+				std::cout << exp.what() << std::endl;
+			}
+			break;
+		case 'E':
+			_isChatWork = false;
+			break;
+		default:
+			std::cout << "Press (L) to Login or (S) to SignUp " << std::endl;
+			break;
+		}
+
+	} while (!_currentUser && _isChatWork);
+}
+
 void Chat::login()
 {
 	std::string login;
