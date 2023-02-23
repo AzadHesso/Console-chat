@@ -197,7 +197,7 @@ void Chat::addMessage()
 
 	if (to == "all")
 		_messageArr.push_back(Message(_currentUser->getLogin(), "all", textMsg));
-	else
+	else 
 		_messageArr.push_back(Message(_currentUser->getLogin(), getUserByLogin(to)->getLogin(), textMsg));
 
 }
